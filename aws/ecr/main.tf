@@ -8,3 +8,4 @@ resource "aws_ecr_repository" "repos" {
     scan_on_push = each.value.scan_on_push
   }
 }
+#test ci
