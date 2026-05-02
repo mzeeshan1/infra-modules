@@ -1,0 +1,22 @@
+%{ if prefix_delegation_enabled ~}
+TOKEN=$(curl -sX PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 60") && \
+INSTANCE_TYPE=$(curl -sH "X-aws-ec2-metadata-token: $TOKEN" "http://169.254.169.254/latest/meta-data/instance-type") && \
+MAX_PODS=$(/etc/eks/max-pods-calculator.sh --instance-type $INSTANCE_TYPE --cni-version ${vpc_cni_version} --cni-prefix-delegation-enabled) && \
+sed -Ei "s/$INSTANCE_TYPE [0-9]+/$INSTANCE_TYPE $MAX_PODS/" /etc/eks/eni-max-pods.txt
+%{ endif ~}
+sysctl fs.inotify.max_user_watches=1048576
+sysctl fs.inotify.max_user_instances=8192
+sysctl vm.max_map_count=524288
+sed -i 's/cgroup-driver=cgroupfs/cgroup-driver=systemd/' /etc/eks/bootstrap.sh
+echo "$(jq '.cgroupDriver="systemd"' "/etc/kubernetes/kubelet/kubelet-config.json")" > "/etc/kubernetes/kubelet/kubelet-config.json"
+cat <<EOT >> /usr/local/share/eks/containerd-config.toml
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+  SystemdCgroup = true
+[plugins."io.containerd.grpc.v1.cri".registry]
+  [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
+    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry:5006"]
+      endpoint = ["registry:5006"]
+  [plugins."io.containerd.grpc.v1.cri".registry.configs]
+    [plugins."io.containerd.grpc.v1.cri".registry.configs."registry:5006".tls]
+      insecure_skip_verify = true
+EOT
