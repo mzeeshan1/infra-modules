@@ -12,4 +12,3 @@ jobs:
     uses: mzeeshan1/ci-workflows/.github/workflows/semantic-release.yml@main
     with:
       monorepo_dirs: "aws" # empty = single repo
-      tag_format: "v"
