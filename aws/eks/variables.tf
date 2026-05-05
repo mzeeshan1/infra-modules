@@ -33,22 +33,22 @@ variable "clusters" {
       configuration_values        = optional(string, null)
       })), {
       coredns = {
-        addon_version = "v1.11.1-eksbuild.9"
+        addon_version = "v1.14.2-eksbuild.4"
       },
       eks-pod-identity-agent = {
-        addon_version = "v1.2.0-eksbuild.1"
+        addon_version = "v1.3.10-eksbuild.3"
       },
       kube-proxy = {
-        addon_version = "v1.29.3-eksbuild.2"
+        addon_version = "v1.35.3-eksbuild.5"
       },
-      aws-ebs-csi-driver = {
-        addon_version = "v1.30.0-eksbuild.1"
-      }
+      # aws-ebs-csi-driver = {
+      #   addon_version = "v1.59.0-eksbuild.1"
+      # }
       aws-efs-csi-driver = {
-        addon_version = "v2.0.6-eksbuild.2"
+        addon_version = "v3.0.1-eksbuild.1"
       }
       vpc-cni = {
-        addon_version        = "v1.18.1-eksbuild.1"
+        addon_version        = "v1.21.1-eksbuild.8"
         before_compute       = false
         configuration_values = "{\"env\": { \"ENABLE_PREFIX_DELEGATION\": \"true\"}}"
       }
@@ -119,7 +119,7 @@ variable "clusters" {
       tags                 = optional(map(string), {})
     }), {})
     node_groups = map(object({
-      ami_id                       = optional(string, "ami-07a1a717270ff8375")
+      ami_id                       = optional(string, "ami-0d8f744c48bb12f65")
       instance_types               = optional(list(string), ["t3a.large"])
       ami_type                     = optional(string, "CUSTOM")
       capacity_type                = optional(string, "SPOT")

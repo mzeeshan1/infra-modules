@@ -12,6 +12,6 @@ locals {
 }
 
 module "vpc" {
-  source = "/Users/muhammadzeeshan/Documents/Babelforce/Babelforce-Repos/terraform-modules/aws/vpc"
+  source = "/Users/muhammadzeeshan/Work/MyWork/infra-modules/aws/vpc"
   vpc    = local.vpc
 }
