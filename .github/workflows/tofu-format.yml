@@ -1,4 +1,4 @@
-name: "Tofu Plan"
+name: "Tofu Format"
 
 on:
   pull_request:
