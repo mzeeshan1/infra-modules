@@ -1,0 +1,26 @@
+name: "Tofu Format"
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tofu-fmt:
+    name: "Tofu Format"
+    runs-on: ubuntu-latest
+    env:
+      TF_VERSION: "v1.11.6"
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+
+      - name: "Setup OpenTofu"
+        uses: opentofu/setup-opentofu@v2
+        with:
+          tofu_version: ${{ env.TF_VERSION }}
+
+      - name: "Tofu Format Check"
+        id: fmt
+        run: tofu fmt -check -recursive
+        continue-on-error: true
