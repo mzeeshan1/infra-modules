@@ -3,7 +3,7 @@ variable "clusters" {
     cluster_version                        = optional(string, "1.35")
     endpoint_private_access                = optional(bool, true)
     endpoint_public_access                 = optional(bool, false)
-    cluster_enabled_log_types              = optional(list(string))
+    cluster_enabled_log_types              = optional(list(string), [])
     cloudwatch_log_group_class             = optional(string, "INFREQUENT_ACCESS")
     cloudwatch_log_group_retention_in_days = optional(number, 30)
     tags                                   = optional(map(string), {})
