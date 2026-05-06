@@ -1,3 +1,10 @@
+# [aws-eks-v1.6.1](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.6.0...aws-eks-v1.6.1) (2026-05-06)
+
+
+### Bug Fixes
+
+* **eks:** fix path for vpc module ([31e1a6c](https://github.com/mzeeshan1/infra-modules/commit/31e1a6c75e03883bd65ea50f91ad43be637021f7))
+
 # [aws-eks-v1.6.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.5.0...aws-eks-v1.6.0) (2026-05-05)
 
 
