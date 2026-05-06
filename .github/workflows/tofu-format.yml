@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  tofu-plan:
+  tofu-fmt:
     name: "Tofu Plan"
     runs-on: ubuntu-latest
     env:
