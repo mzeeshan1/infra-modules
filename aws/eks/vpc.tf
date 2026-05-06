@@ -12,6 +12,6 @@ locals {
 }
 
 module "vpc" {
-  source = "/Users/muhammadzeeshan/Work/MyWork/infra-modules/aws/vpc"
+  source = "git::https://github.com/mzeeshan1/infra-modules.git//aws/vpc?ref=aws-vpc-v1.0.0"
   vpc    = local.vpc
 }
