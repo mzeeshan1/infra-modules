@@ -1,3 +1,10 @@
+# [aws-eks-v1.6.2](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.6.1...aws-eks-v1.6.2) (2026-05-06)
+
+
+### Bug Fixes
+
+* **eks:** remove eks logs ([a004ba9](https://github.com/mzeeshan1/infra-modules/commit/a004ba98d70f5e7481d65e801bda12314b4e5d6e))
+
 # [aws-eks-v1.6.1](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.6.0...aws-eks-v1.6.1) (2026-05-06)
 
 
