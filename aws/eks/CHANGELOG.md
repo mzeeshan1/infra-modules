@@ -1,3 +1,10 @@
+# [aws-eks-v1.8.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.7.0...aws-eks-v1.8.0) (2026-05-11)
+
+
+### Features
+
+* **eks:** modify sg ([c190b89](https://github.com/mzeeshan1/infra-modules/commit/c190b8959b97aa006023ebe662ca1dfcadb4ddbf))
+
 # [aws-eks-v1.7.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.6.2...aws-eks-v1.7.0) (2026-05-11)
 
 
