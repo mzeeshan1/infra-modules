@@ -1,3 +1,10 @@
+# [aws-eks-v1.7.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.6.2...aws-eks-v1.7.0) (2026-05-11)
+
+
+### Features
+
+* **eks:** add pia for aws lb ([d12ae71](https://github.com/mzeeshan1/infra-modules/commit/d12ae7103c792a08d7cd8480333c40a0e41d1bb9))
+
 # [aws-eks-v1.6.2](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.6.1...aws-eks-v1.6.2) (2026-05-06)
 
 
