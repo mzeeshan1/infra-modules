@@ -1,3 +1,10 @@
+# [aws-eks-v1.10.1](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.10.0...aws-eks-v1.10.1) (2026-05-11)
+
+
+### Bug Fixes
+
+* **eks:** fix syntax for security group ([8b3a790](https://github.com/mzeeshan1/infra-modules/commit/8b3a790a70326c58b182501023587fbfbe4e671d))
+
 # [aws-eks-v1.10.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.9.0...aws-eks-v1.10.0) (2026-05-11)
 
 
