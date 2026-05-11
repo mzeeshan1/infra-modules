@@ -24,7 +24,6 @@ locals {
     for k, v in var.clusters : module.eks[k].cluster_name => v.pod_identity_associations.aws_lb_controller
     if v.enable_pod_identity_associations && v.pod_identity_associations.aws_lb_controller.enabled
   }
-
 }
 
 module "cert_manager_pod_identity" {
