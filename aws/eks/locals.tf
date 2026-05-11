@@ -81,7 +81,7 @@ locals {
       to_port     = 8080
       from_port   = 8080
       type        = "ingress"
-      cidr        = ["0.0.0.0/0"]
+      cidr_blocks = ["0.0.0.0/0"]
 
     }
   }
