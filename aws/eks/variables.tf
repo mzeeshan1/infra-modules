@@ -82,6 +82,12 @@ variable "clusters" {
         service_account_name = optional(string, "cert-manager")
         tags                 = optional(map(string), {})
       }), {})
+      aws_lb_controller = optional(object({
+        enabled              = optional(bool, true)
+        namespace            = optional(string, "aws-lb-controller")
+        service_account_name = optional(string, "aws-lb-controller")
+        tags                 = optional(map(string), {})
+      }), {})
       cluster_autoscaler = optional(object({
         enabled              = optional(bool, true)
         namespace            = optional(string, "kube-system")

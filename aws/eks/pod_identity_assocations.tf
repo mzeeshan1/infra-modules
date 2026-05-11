@@ -20,6 +20,11 @@ locals {
     for k, v in var.clusters : module.eks[k].cluster_name => v.pod_identity_associations.efs_csi_driver
     if v.enable_pod_identity_associations && v.pod_identity_associations.efs_csi_driver.enabled
   }
+  aws_lb_controller_associations = {
+    for k, v in var.clusters : module.eks[k].cluster_name => v.pod_identity_associations.aws_lb_controller
+    if v.enable_pod_identity_associations && v.pod_identity_associations.aws_lb_controller.enabled
+  }
+
 }
 
 module "cert_manager_pod_identity" {
@@ -80,4 +85,15 @@ module "efs_csi_driver_pod_identity" {
   association_defaults      = merge([for k, v in local.efs_csi_driver_assocations : tomap({ "namespace" = v.namespace, "service_account" = v.service_account_name })]...)
   associations              = { for k, v in local.efs_csi_driver_assocations : k => { "cluster_name" = k } }
   tags                      = merge([for k, v in local.efs_csi_driver_assocations : merge(tomap({ "eks_pod_identity_association" = "efs-csi-driver" }), v.tags)]...)
+}
+
+module "aws_lb_controller_pod_identity" {
+  source                          = "terraform-aws-modules/eks-pod-identity/aws"
+  version                         = "1.4.1"
+  count                           = length(local.aws_lb_controller_associations) > 0 ? 1 : 0
+  name                            = "aws-lb-controller"
+  attach_aws_lb_controller_policy = true
+  association_defaults            = merge([for k, v in local.aws_lb_controller_associations : tomap({ "namespace" = v.namespace, "service_account" = v.service_account_name })]...)
+  associations                    = { for k, v in local.aws_lb_controller_associations : k => { "cluster_name" = k } }
+  tags                            = merge([for k, v in local.aws_lb_controller_associations : merge(tomap({ "eks_pod_identity_association" = "aws-lb-controller" }), v.tags)]...)
 }
