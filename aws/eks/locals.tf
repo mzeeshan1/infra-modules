@@ -65,8 +65,7 @@ locals {
       to_port     = 80
       from_port   = 80
       type        = "ingress"
-      cidr_blocks = ["0.0.0.0/0"]
-
+      self        = true
     }
     node_to_node_ingress_https = {
       description = "Allow node-to-node on 443 for ingress"
@@ -74,7 +73,15 @@ locals {
       to_port     = 443
       from_port   = 443
       type        = "ingress"
-      cidr_blocks = ["0.0.0.0/0"]
+      self        = true
+    }
+    http_to_node_from_everywhere = {
+      description = "Allow http on 8080"
+      protocol    = "tcp"
+      to_port     = 8080
+      from_port   = 8080
+      type        = "ingress"
+      cidr        = ["0.0.0.0/0"]
 
     }
   }
