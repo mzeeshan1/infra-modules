@@ -1,3 +1,10 @@
+# [aws-eks-v1.10.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.9.0...aws-eks-v1.10.0) (2026-05-11)
+
+
+### Features
+
+* **eks:** allow http on 8080 from everywhere for sealed secrets to work properly ([710d703](https://github.com/mzeeshan1/infra-modules/commit/710d703fdf377ebd9f6de8a25d7e19e7c4dfdd7d))
+
 # [aws-eks-v1.9.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.8.0...aws-eks-v1.9.0) (2026-05-11)
 
 
