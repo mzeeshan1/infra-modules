@@ -1,3 +1,10 @@
+# [aws-eks-v1.9.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.8.0...aws-eks-v1.9.0) (2026-05-11)
+
+
+### Features
+
+* **eks:** update module ([ab3a851](https://github.com/mzeeshan1/infra-modules/commit/ab3a851d9356744dfb77fee6db439544c206d096))
+
 # [aws-eks-v1.8.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.7.0...aws-eks-v1.8.0) (2026-05-11)
 
 
