@@ -1,3 +1,10 @@
+# [aws-eks-v1.11.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.10.2...aws-eks-v1.11.0) (2026-05-12)
+
+
+### Features
+
+* **eks:** update pia for aws elb ([dd49b24](https://github.com/mzeeshan1/infra-modules/commit/dd49b24d8202e4875ed0bbe6922a94145cfd8320))
+
 # [aws-eks-v1.10.2](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.10.1...aws-eks-v1.10.2) (2026-05-12)
 
 
