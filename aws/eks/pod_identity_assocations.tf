@@ -88,7 +88,7 @@ module "efs_csi_driver_pod_identity" {
 
 module "aws_lb_controller_pod_identity" {
   source                          = "terraform-aws-modules/eks-pod-identity/aws"
-  version                         = "1.4.1"
+  version                         = "1.12.1"
   count                           = length(local.aws_lb_controller_associations) > 0 ? 1 : 0
   name                            = "aws-lb-controller"
   attach_aws_lb_controller_policy = true
