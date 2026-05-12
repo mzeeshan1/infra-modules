@@ -1,3 +1,10 @@
+# [aws-eks-v1.10.2](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.10.1...aws-eks-v1.10.2) (2026-05-12)
+
+
+### Bug Fixes
+
+* **eks:** fix pia for aws lb controller ([2cbec56](https://github.com/mzeeshan1/infra-modules/commit/2cbec5627876611f6cbb74a85224d5b95e12d456))
+
 # [aws-eks-v1.10.1](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.10.0...aws-eks-v1.10.1) (2026-05-11)
 
 
