@@ -84,8 +84,8 @@ variable "clusters" {
       }), {})
       aws_lb_controller = optional(object({
         enabled              = optional(bool, true)
-        namespace            = optional(string, "aws-lb-controller")
-        service_account_name = optional(string, "aws-lb-controller")
+        namespace            = optional(string, "kube-system")
+        service_account_name = optional(string, "aws-load-balancer-controller")
         tags                 = optional(map(string), {})
       }), {})
       cluster_autoscaler = optional(object({
