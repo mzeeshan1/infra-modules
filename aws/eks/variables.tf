@@ -112,11 +112,19 @@ variable "clusters" {
         service_account_name = optional(string, "efs-csi-controller-sa")
         tags                 = optional(map(string), {})
       }), {})
+      external_secrets = optional(object({
+        enabled              = optional(bool, true)
+        namespace            = optional(string, "external-secrets")
+        service_account_name = optional(string, "external-secrets")
+        tags                 = optional(map(string), {})
+      }), {})
+
       }), {
       cert_manager       = {}
       cluster_autoscaler = {}
       external_dns       = {}
       ack_rds_controller = {}
+      external_secrets   = {}
     })
     karpenter = optional(object({
       enabled              = optional(bool, false)
