@@ -1,3 +1,10 @@
+# [aws-eks-v1.12.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.11.0...aws-eks-v1.12.0) (2026-05-13)
+
+
+### Features
+
+* **eks:** add pia for external secrets ([e9671e4](https://github.com/mzeeshan1/infra-modules/commit/e9671e412e65339f184cb7b18b6965d4791e9f7a))
+
 # [aws-eks-v1.11.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.10.2...aws-eks-v1.11.0) (2026-05-12)
 
 
