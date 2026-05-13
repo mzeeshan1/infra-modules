@@ -107,7 +107,24 @@ module "external_secrets_pod_identity" {
   count                          = length(local.aws_lb_controller_associations) > 0 ? 1 : 0
   name                           = "external-secrets"
   attach_external_secrets_policy = true
-  association_defaults           = merge([for k, v in local.external_secrets_associations : tomap({ "namespace" = v.namespace, "service_account" = v.service_account_name })]...)
-  associations                   = { for k, v in local.external_secrets_associations : k => { "cluster_name" = k } }
-  tags                           = merge([for k, v in local.external_secrets_associations : merge(tomap({ "eks_pod_identity_association" = "external-secrets" }), v.tags)]...)
+  additional_policy_arns = {
+    ecr = aws_iam_policy.external_secrets_ecr.arn
+  }
+  association_defaults = merge([for k, v in local.external_secrets_associations : tomap({ "namespace" = v.namespace, "service_account" = v.service_account_name })]...)
+  associations         = { for k, v in local.external_secrets_associations : k => { "cluster_name" = k } }
+  tags                 = merge([for k, v in local.external_secrets_associations : merge(tomap({ "eks_pod_identity_association" = "external-secrets" }), v.tags)]...)
+}
+
+resource "aws_iam_policy" "external_secrets_ecr" {
+  name = "external-secrets-ecr"
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = "ecr:GetAuthorizationToken"
+        Resource = "*" # ECR GetAuthorizationToken can only be * 
+      }
+    ]
+  })
 }
