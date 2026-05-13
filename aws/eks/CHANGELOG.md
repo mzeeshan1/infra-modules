@@ -1,3 +1,10 @@
+# [aws-eks-v1.12.1](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.12.0...aws-eks-v1.12.1) (2026-05-13)
+
+
+### Bug Fixes
+
+* **eks:** pia for external secrets ([5e7441a](https://github.com/mzeeshan1/infra-modules/commit/5e7441afb05ce561ba696fc3de33a863a233d7e5))
+
 # [aws-eks-v1.12.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.11.0...aws-eks-v1.12.0) (2026-05-13)
 
 
