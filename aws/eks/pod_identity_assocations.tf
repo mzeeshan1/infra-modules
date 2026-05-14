@@ -131,6 +131,7 @@ resource "aws_iam_policy" "external_secrets_ecr" {
           "ecr:GetDownloadUrlForLayer",
           "ecr:BatchGetImage",
           "ecr:BatchCheckLayerAvailability",
+          "ecr:ListImages"
         ]
         Resource = "arn:aws:ecr:eu-central-1:783149339345:repository/*"
       }
