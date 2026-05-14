@@ -124,6 +124,15 @@ resource "aws_iam_policy" "external_secrets_ecr" {
         Effect   = "Allow"
         Action   = "ecr:GetAuthorizationToken"
         Resource = "*" # ECR GetAuthorizationToken can only be * 
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchGetImage",
+          "ecr:BatchCheckLayerAvailability",
+        ]
+        Resource = "arn:aws:ecr:eu-central-1:783149339345:repository/subman"
       }
     ]
   })
