@@ -1,3 +1,10 @@
+# [aws-eks-v1.14.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.13.0...aws-eks-v1.14.0) (2026-05-14)
+
+
+### Features
+
+* **eks:** add ebs csi controller pia ([c3a6ff0](https://github.com/mzeeshan1/infra-modules/commit/c3a6ff0c5ce32d9ad7dbd89355fb94f67a3dc2ef))
+
 # [aws-eks-v1.13.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.12.4...aws-eks-v1.13.0) (2026-05-14)
 
 
