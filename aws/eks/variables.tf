@@ -41,9 +41,9 @@ variable "clusters" {
       kube-proxy = {
         addon_version = "v1.35.3-eksbuild.5"
       },
-      # aws-ebs-csi-driver = {
-      #   addon_version = "v1.59.0-eksbuild.1"
-      # }
+      aws-ebs-csi-driver = {
+        addon_version = "v1.59.0-eksbuild.1"
+      }
       aws-efs-csi-driver = {
         addon_version = "v3.0.1-eksbuild.1"
       }
