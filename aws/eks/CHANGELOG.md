@@ -1,3 +1,10 @@
+# [aws-eks-v1.13.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.12.4...aws-eks-v1.13.0) (2026-05-14)
+
+
+### Features
+
+* **eks:** enable ebs csi driver ([23c0116](https://github.com/mzeeshan1/infra-modules/commit/23c01166754ca20a44ab6a4e1d6e77371403cabf))
+
 # [aws-eks-v1.12.4](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.12.3...aws-eks-v1.12.4) (2026-05-14)
 
 
