@@ -118,7 +118,12 @@ variable "clusters" {
         service_account_name = optional(string, "external-secrets")
         tags                 = optional(map(string), {})
       }), {})
-
+      ebs_csi_controller = optional(object({
+        enabled              = optional(bool, true)
+        namespace            = optional(string, "kube-system")
+        service_account_name = optional(string, "ebs-csi-controller-sa")
+        tags                 = optional(map(string), {})
+      }), {})
       }), {
       cert_manager       = {}
       cluster_autoscaler = {}
