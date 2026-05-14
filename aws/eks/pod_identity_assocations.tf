@@ -28,6 +28,10 @@ locals {
     for k, v in var.clusters : module.eks[k].cluster_name => v.pod_identity_associations.external_secrets
     if v.enable_pod_identity_associations && v.pod_identity_associations.aws_lb_controller.enabled
   }
+  ebs_csi_controller_associations = {
+    for k, v in var.clusters : module.eks[k].cluster_name => v.pod_identity_associations.ebs_csi_controller
+    if v.enable_pod_identity_associations && v.pod_identity_associations.ebs_csi_controller.enabled
+  }
 }
 
 module "cert_manager_pod_identity" {
@@ -113,6 +117,17 @@ module "external_secrets_pod_identity" {
   association_defaults = merge([for k, v in local.external_secrets_associations : tomap({ "namespace" = v.namespace, "service_account" = v.service_account_name })]...)
   associations         = { for k, v in local.external_secrets_associations : k => { "cluster_name" = k } }
   tags                 = merge([for k, v in local.external_secrets_associations : merge(tomap({ "eks_pod_identity_association" = "external-secrets" }), v.tags)]...)
+}
+
+module "ebs_csi_controller_identity" {
+  source                    = "terraform-aws-modules/eks-pod-identity/aws"
+  version                   = "1.12.1"
+  count                     = length(local.ebs_csi_controller_associations) > 0 ? 1 : 0
+  name                      = "ebs-csi-controller"
+  attach_aws_ebs_csi_policy = true
+  association_defaults      = merge([for k, v in local.ebs_csi_controller_associations : tomap({ "namespace" = v.namespace, "service_account" = v.service_account_name })]...)
+  associations              = { for k, v in local.ebs_csi_controller_associations : k => { "cluster_name" = k } }
+  tags                      = merge([for k, v in local.ebs_csi_controller_associations : merge(tomap({ "eks_pod_identity_association" = "ebs-csi-controller" }), v.tags)]...)
 }
 
 resource "aws_iam_policy" "external_secrets_ecr" {
