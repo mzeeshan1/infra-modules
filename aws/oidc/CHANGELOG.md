@@ -1,3 +1,10 @@
+# [aws-oidc-v1.2.0](https://github.com/mzeeshan1/infra-modules/compare/aws-oidc-v1.1.0...aws-oidc-v1.2.0) (2026-10-02)
+
+
+### Features
+
+* update modules ([de5db35](https://github.com/mzeeshan1/infra-modules/commit/de5db3577f578c589b33ecd41e5a3b5ca1281589))
+
 # [aws-oidc-v1.1.0](https://github.com/mzeeshan1/infra-modules/compare/aws-oidc-v1.0.0...aws-oidc-v1.1.0) (2026-10-02)
 
 
