@@ -1,15 +1,13 @@
 module "github_actions_role" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-role"
-  version = "~> 6.0"
+  source  = "terraform-aws-modules/iam/aws//modules/iam-github-oidc-role"
+  version = "~> 5.0"
 
   name = "github-actions"
 
-  enable_github_oidc = true
-
-  oidc_wildcard_subjects = var.github_oidc_subjects
+  subjects = var.github_oidc_subjects
 
   policies = {
-    ECR = aws_iam_policy.github_ecr.arn
+    GitHubActions = aws_iam_policy.github_actions.arn
   }
 
   tags = {
@@ -17,31 +15,11 @@ module "github_actions_role" {
   }
 }
 
-resource "aws_iam_policy" "github_ecr" {
-  name = "github-actions-ecr"
+resource "aws_iam_policy" "github_actions" {
+  name = "github-actions"
 
   policy = jsonencode({
-    Version = "2012-10-17"
-
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "ecr:GetAuthorizationToken"
-        ]
-        Resource = "*"
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "ecr:BatchCheckLayerAvailability",
-          "ecr:CompleteLayerUpload",
-          "ecr:InitiateLayerUpload",
-          "ecr:PutImage",
-          "ecr:UploadLayerPart"
-        ]
-        Resource = aws_ecr_repository.my_app.arn
-      }
-    ]
+    Version   = "2012-10-17"
+    Statement = local.policy_statements
   })
 }

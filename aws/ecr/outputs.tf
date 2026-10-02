@@ -4,3 +4,10 @@ output "repository_urls" {
     key => repo.repository_url
   }
 }
+
+output "repository_arns" {
+  value = {
+    for key, repo in aws_ecr_repository.repos :
+    key => repo.arn
+  }
+}
