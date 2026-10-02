@@ -1,3 +1,10 @@
+# [aws-ecr-v1.4.0](https://github.com/mzeeshan1/infra-modules/compare/aws-ecr-v1.3.0...aws-ecr-v1.4.0) (2026-10-02)
+
+
+### Features
+
+* update modules ([563a7e4](https://github.com/mzeeshan1/infra-modules/commit/563a7e4e8fa102b41e1905596bad4e76881b0e21))
+
 # [aws-ecr-v1.3.0](https://github.com/mzeeshan1/infra-modules/compare/aws-ecr-v1.2.0...aws-ecr-v1.3.0) (2026-05-06)
 
 
