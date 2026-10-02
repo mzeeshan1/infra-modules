@@ -3,3 +3,9 @@ variable "github_oidc_subjects" {
   type        = list(string)
   default     = []
 }
+
+variable "github_actions_policy_statements" {
+  description = "Additional IAM policy statements for GitHub Actions."
+  type        = list(any)
+  default     = []
+}
