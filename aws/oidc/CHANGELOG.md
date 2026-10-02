@@ -1,3 +1,10 @@
+# [aws-oidc-v1.5.0](https://github.com/mzeeshan1/infra-modules/compare/aws-oidc-v1.4.0...aws-oidc-v1.5.0) (2026-10-02)
+
+
+### Features
+
+* **oidc:** update module ([ddb5545](https://github.com/mzeeshan1/infra-modules/commit/ddb554595f35722154730509395a632ce77f895d))
+
 # [aws-oidc-v1.4.0](https://github.com/mzeeshan1/infra-modules/compare/aws-oidc-v1.3.0...aws-oidc-v1.4.0) (2026-10-02)
 
 
