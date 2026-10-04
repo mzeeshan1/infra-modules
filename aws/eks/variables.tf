@@ -124,6 +124,20 @@ variable "clusters" {
         service_account_name = optional(string, "ebs-csi-controller-sa")
         tags                 = optional(map(string), {})
       }), {})
+      crossplane = optional(object({
+        enabled   = optional(bool, false)
+        namespace = optional(string, "crossplane")
+        tags      = optional(map(string), {})
+        providers = optional(map(object({
+          policy_statements = optional(list(object({
+            sid       = optional(string)
+            effect    = optional(string, "Allow")
+            actions   = list(string)
+            resources = list(string)
+          })), [])
+          additional_policy_arns = optional(map(string), {})
+        })), {})
+      }), {})
       }), {
       cert_manager       = {}
       cluster_autoscaler = {}
