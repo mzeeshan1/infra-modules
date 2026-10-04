@@ -32,6 +32,19 @@ locals {
     for k, v in var.clusters : module.eks[k].cluster_name => v.pod_identity_associations.ebs_csi_controller
     if v.enable_pod_identity_associations && v.pod_identity_associations.ebs_csi_controller.enabled
   }
+  crossplane_provider_roles = merge({}, [
+    for k, v in var.clusters : {
+      for provider, cfg in v.pod_identity_associations.crossplane.providers : "${k}-${provider}" => {
+        cluster_name           = module.eks[k].cluster_name
+        provider               = provider
+        namespace              = v.pod_identity_associations.crossplane.namespace
+        tags                   = v.pod_identity_associations.crossplane.tags
+        policy_statements      = cfg.policy_statements
+        additional_policy_arns = cfg.additional_policy_arns
+      }
+    }
+    if v.enable_pod_identity_associations && v.pod_identity_associations.crossplane.enabled
+  ]...)
 }
 
 module "cert_manager_pod_identity" {
@@ -130,6 +143,30 @@ module "ebs_csi_controller_identity" {
   tags                      = merge([for k, v in local.ebs_csi_controller_associations : merge(tomap({ "eks_pod_identity_association" = "ebs-csi-controller" }), v.tags)]...)
 }
 
+module "crossplane_pod_identity" {
+  source   = "terraform-aws-modules/eks-pod-identity/aws"
+  version  = "1.12.1"
+  for_each = local.crossplane_provider_roles
+
+  name = "crossplane-${each.key}"
+
+  attach_custom_policy   = length(each.value.policy_statements) > 0
+  policy_statements      = each.value.policy_statements
+  additional_policy_arns = each.value.additional_policy_arns
+
+  associations = {
+    (each.value.cluster_name) = {
+      cluster_name    = each.value.cluster_name
+      namespace       = each.value.namespace
+      service_account = "provider-aws-${each.value.provider}"
+    }
+  }
+
+  tags = merge(
+    { eks_pod_identity_association = "crossplane-provider-${each.value.provider}" },
+    each.value.tags
+  )
+}
 resource "aws_iam_policy" "external_secrets_ecr" {
   name = "external-secrets-ecr"
   policy = jsonencode({
@@ -153,3 +190,5 @@ resource "aws_iam_policy" "external_secrets_ecr" {
     ]
   })
 }
+
+
