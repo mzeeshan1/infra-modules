@@ -1,3 +1,10 @@
+# [aws-eks-v1.15.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.14.1...aws-eks-v1.15.0) (2026-10-04)
+
+
+### Features
+
+* **eks:** add pia for crossplane ([a9cefc6](https://github.com/mzeeshan1/infra-modules/commit/a9cefc6ca7b70c07651059110df6a4d6e268a49a))
+
 # [aws-eks-v1.14.1](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.14.0...aws-eks-v1.14.1) (2026-10-02)
 
 
