@@ -1,3 +1,10 @@
+# [aws-eks-v1.16.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.15.0...aws-eks-v1.16.0) (2026-10-08)
+
+
+### Features
+
+* **eks:** vault iac stuff ([fdc5789](https://github.com/mzeeshan1/infra-modules/commit/fdc5789540142cf5cd104d5bc8020217ba1e873d))
+
 # [aws-eks-v1.15.0](https://github.com/mzeeshan1/infra-modules/compare/aws-eks-v1.14.1...aws-eks-v1.15.0) (2026-10-04)
 
 
