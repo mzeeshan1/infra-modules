@@ -186,3 +186,23 @@ output "efs_csi_driver_pod_identity_associations" {
   description = "Map of Pod Identity associations created"
   value       = module.efs_csi_driver_pod_identity[*].associations
 }
+
+output "vault_kms_key_arn" {
+  description = "ARN of the KMS key used for Vault auto-unseal"
+  value       = try(aws_kms_key.vault_auto_unseal[0].arn, null)
+}
+
+output "vault_pod_identity_iam_role_arn" {
+  description = "ARN of the IAM role used by the Vault pod identity association"
+  value       = try(aws_iam_role.vault_kms_auto_unseal[0].arn, null)
+}
+
+output "vault_pca_arn" {
+  description = "ARN of the ACM Private CA backing cert-manager's AWSPCAClusterIssuer"
+  value       = aws_acmpca_certificate_authority.vault_private_ca.arn
+}
+
+output "aws_privateca_issuer_iam_role_arn" {
+  description = "ARN of the IAM role used by the aws-privateca-connector-for-kubernetes addon"
+  value       = try(aws_iam_role.cert_manager_private_ca[0].arn, null)
+}
