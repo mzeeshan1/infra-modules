@@ -138,6 +138,19 @@ variable "clusters" {
           additional_policy_arns = optional(map(string), {})
         })), {})
       }), {})
+      vault = optional(object({
+        enabled              = optional(bool, true)
+        namespace            = optional(string, "vault")
+        service_account_name = optional(string, "vault")
+        tags                 = optional(map(string), {})
+      }), {})
+      aws_privateca_issuer = optional(object({
+        enabled              = optional(bool, true)
+        namespace            = optional(string, "aws-privateca-issuer")
+        service_account_name = optional(string, "aws-privateca-issuer")
+        addon_version        = optional(string, "v1.9.2-eksbuild.1")
+        tags                 = optional(map(string), {})
+      }), {})
       }), {
       cert_manager       = {}
       cluster_autoscaler = {}
