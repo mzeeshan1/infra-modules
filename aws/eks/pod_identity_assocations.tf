@@ -185,7 +185,7 @@ resource "aws_iam_policy" "external_secrets_ecr" {
           "ecr:BatchCheckLayerAvailability",
           "ecr:ListImages"
         ]
-        Resource = "arn:aws:ecr:eu-central-1:261175718795:repository/*"
+        Resource = "arn:aws:ecr:eu-central-1:138420161232:repository/*"
       }
     ]
   })
